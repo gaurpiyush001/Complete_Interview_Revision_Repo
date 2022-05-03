@@ -1,0 +1,3 @@
+arr[i]
+compiler interprets the above line as -:
+base_address(name_of_array) + index*sizeOfDataType
