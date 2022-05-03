@@ -1,0 +1,23 @@
+In C/C++, even 2-D arrays are stored sequentially, one row after another in memory.
+
+
+for Ex-:
+
+int a[5][3];
+int *head;
+
+head = &a[0][0];
+a[2][1] = 2; // <--
+
+In C/C++, even 2-D arrays are stored sequentially, one row after another in memory. So, when you have (in a single function):
+
+int a[5][3];
+int *head;
+
+head = &a[0][0];
+a[2][1] = 2; // <--
+The element you are actually accessing with a[2][1] is *(head + 2*3 + 1), cause sequentially, that element is after 3 elements of the 0 row, and 
+3 elements of the 1 row, and then one more index further.
+
+You know that with array[2][3], it can be determined that you are actually accessing element at the memory address *(&array[0][0] + 2*5 + 3) because 
+the function knows the size of the second dimension.
