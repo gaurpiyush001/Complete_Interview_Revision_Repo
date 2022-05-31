@@ -3,87 +3,46 @@ using namespace std;
 
 // 1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
 
-// This Problem is similar to boundary Traversal of Matrix, But In Addition to that here we reduce the boundary in each circular traversal
-void printSpiral(vector<vector<int>>& mat, int r, int c)
+// This Problem is similar to boundary Traversal of Matrix, But In Addition to that here we reduce the boundary in each boundary traversal
+void printSpiral(vector<vector<int>> &mat, int r, int c)
 {
-    int sr = 0, er = r;
-    int sc = 0, ec = c;
+    int sr = 0, er = r - 1; // starting row(sr) and ending row(er)
+    int sc = 0, ec = c - 1; // starting column(sc) and ending column(ec)
 
     int i = sr, j = sr;
+    int total = r*c;
+    int cnt = 0;
 
-    while (1)
+    while (sr <= er)
     {
 
-        if (sr == j)
+        for (i = sr, j = sc; j <= ec && cnt<total; j++)
         {
-            i = sr;
-            if (i < er)
-            {
-                for (j = sc; j < ec; j++)
-                {
-                    cout << mat[i][j] << " ";
-                }
-                sr++;
-            }
-            else {
-                break;
-            }
-            // cout<<"I executed 1st"<<endl;
+            cout << mat[i][j] << " ";
+            cnt++;
         }
+        sr++;
 
-        else if (j == ec)
+        for (j = ec, i = sr; i <= er && cnt<total; i++)
         {
-            i = ec - 1;
-            if (i >= sc)
-            {
-                for (j = sr; j < er; j++)
-                {
-                    cout << mat[j][i] << " ";
-                }
-                ec--;
-            }            else {
-                break;
-            }
-            // cout<<"I executed 2st"<<endl;
+            cout << mat[i][j] << " ";
+            cnt++;
         }
+        ec--;
 
-        else if (j == er)
+        for (i = er, j = ec; j >= sc && cnt<total; j--)
         {
-            i = er - 1;
-            if (i >= sr)
-            {
-                for (j = ec - 1; j >= sc; j--)
-                {
-                    cout << mat[i][j] << " ";
-                }
-                er--;
-                j++;
-            }            else {
-                break;
-            }
-            // cout<<"I executed 3rd"<<endl;
+            cout << mat[i][j] << " ";
+            cnt++;
         }
+        er--;
 
-        else if (j == sc)
+        for (j = sc, i = er; i >= sr && cnt<total; i--)
         {
-            i = sc;
-            if (i <= ec)
-            {
-                for (j = er - 1; j >= sr; j--)
-                {
-                    cout << mat[j][i] << " ";
-                }
-                sc++;
-                j++;
-            }            else {
-                break;
-            }
-            // cout<<"I executed 4th"<<endl;
-
+            cout << mat[i][j] << " ";
+            cnt++;
         }
-
-        else
-            break;
+        sc++;
     }
 }
 
