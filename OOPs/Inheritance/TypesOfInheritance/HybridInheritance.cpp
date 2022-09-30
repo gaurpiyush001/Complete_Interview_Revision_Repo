@@ -16,4 +16,4 @@ class C: public A {
 //Multiple Inheritace
 class D: public A, public B{
 
-}
+};

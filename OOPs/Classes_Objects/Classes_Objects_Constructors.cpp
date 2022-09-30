@@ -7,7 +7,7 @@ class Human
 {
     // properties -> Data Members
 public: // access modifier/specifier, private(by default), public, protected
-//Public ke neechey jitney bhi Data memeber ya data Function hongey toh vo class ke ander bhi acces ho sktey hai autr class ke bahar kahi bhi
+//Public ke neechey jitney bhi Data memeber ya data Function hongey toh vo class ke ander bhi acces ho sktey hai aur class ke bahar kahi bhi
 
     char gender;
     int age;
@@ -36,10 +36,10 @@ public: // access modifier/specifier, private(by default), public, protected
         this->gender = gender;
     }
 
-    // copy constructor, reference nhi lgayengey oh infinite loop mein chlega copy constructor, pass by value mein toh copy bnti hai
+    // copy constructor, reference nhi lgayengey toh infinite loop mein chlega copy constructor, pass by value mein toh copy bnti hai
 
-    //Default Copy Constructor always do shallow copy --> IMP
-    //  SHALLOW COPY --> same hi memory ko aap access kr rahe ho 2 variable names se
+    // Default Copy Constructor always do shallow copy --> IMP
+    // SHALLOW COPY --> same hi memory ko aap access kr rahe ho 2 variable names se
     // DEEP COPY -> agar custom copy constructor mein krna hai toh vaha new array dynamically bnalo 
 
     Human(Human &temp)

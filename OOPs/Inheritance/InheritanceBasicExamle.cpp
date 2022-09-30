@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//INHERITANCE -: Cpability of a class to derive properties and behavior form anotehr class
+//INHERITANCE -: Capability of a class to derive properties and behavior form anotehr class
 
 //-------Objective -: here we will show how to inherit a class from another class, So female class will be INHERITED BY Human Class 
 
