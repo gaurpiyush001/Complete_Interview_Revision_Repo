@@ -1,0 +1,3 @@
+Proof For Failing of Dijkstra in -ve Edges --: PLease read the article Awesome article 
+
+https://www.baeldung.com/cs/dijkstra-negative-weights 
