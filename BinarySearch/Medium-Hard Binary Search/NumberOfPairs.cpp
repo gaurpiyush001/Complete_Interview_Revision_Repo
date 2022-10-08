@@ -44,7 +44,7 @@ class Solution{
     
     // Function to return count of pairs (x, y) such that
     // x belongs to X[], y belongs to Y[] and x^y > y^x
-    int countPairs(int X[], int Y[], int m, int n){
+    long long solve(int X[], int Y[], int m, int n){
         
         // To store counts of 0, 1, 2, 3 and 4 in array Y
         int NoOfY[5] = { 0 };
@@ -55,7 +55,7 @@ class Solution{
         // Sort Y[] so that we can do binary search in it
         sort(Y, Y + n);
     
-        int total_pairs = 0; // Initialize result
+        long long total_pairs = 0; // Initialize result
     
         // Take every element of X and count pairs with it
         for (int i = 0; i < m; i++)
@@ -69,7 +69,7 @@ class Solution{
     {
        //Your code here
        
-        return countPairs(X, Y, m, n);
+        return solve(X, Y, M, N);
        
     }
 };
