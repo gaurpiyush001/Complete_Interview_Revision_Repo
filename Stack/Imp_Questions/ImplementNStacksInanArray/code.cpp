@@ -48,6 +48,7 @@ public:
 
         //update freespot
         freespot = next[index];
+        
         //insert element
         arr[index] = x;
         
