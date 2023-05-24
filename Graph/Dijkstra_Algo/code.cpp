@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//Undirected Weighted graph ----> dimpley via set
+//Directed Acyclic Graph hai toh --> Topological sort
 
 class Solution
 {
@@ -44,9 +46,9 @@ class Solution
                         st.erase(record);
                     }
                     
-                dist[neighbour[0]]= topDist + neighbour[1];//updating the minimum distance in distance vector
+                    dist[neighbour[0]]= topDist + neighbour[1];//updating the minimum distance in distance vector
                 
-                st.insert({dist[neighbour[0]],neighbour[0]});//insert into the set
+                    st.insert({dist[neighbour[0]],neighbour[0]});//insert into the set
                 }
             }
         }
