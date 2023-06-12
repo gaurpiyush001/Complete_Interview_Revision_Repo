@@ -1,6 +1,8 @@
-#include <bits/stdc++.h>
+
+#include<bits/stdc++.h>
 using namespace std;
 
+//This node contains the structure of the Node meri ek N-Arry tree ki node mein kon konse members hi sktey hai
 struct Node{
 	string v;
 	vector<Node*> links;
@@ -51,6 +53,7 @@ struct Node* buildTree(Node *root, int &m, vector<string> &s){
 		vector<string> temp;
 		for(int i = st; i < st + m; i++)
 			temp.push_back(s[i]);
+
 		r->addLinks(temp,r);
 		st += m;
 
@@ -86,6 +89,9 @@ class Tree{
 			}
 			
 		}
+
+
+
 
 		bool verifyDecendants(Node *r, int &id, vector<Node*> &v){
 			if(r->isLocked){
