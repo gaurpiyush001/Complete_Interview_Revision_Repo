@@ -41,10 +41,6 @@ void build(Block *root, vector<string> nodes, int totalChild)
         Block *block = q.front();
         q.pop();
 
-        // if(start >= node.size()){
-        //   continue;
-        // }
-
         for (int i = start; i < start + totalChild; i++)
         {
 
