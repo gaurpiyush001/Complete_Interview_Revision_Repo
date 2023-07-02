@@ -2,6 +2,7 @@ CREATE DATABASE IF NOT EXISTS ORG;
 SHOW DATABASES;
 USE ORG; #switching to ORG Databases  
 
+#DDL -> data definition language command for deining the schema 
 CREATE TABLE Worker (
 	WORKER_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     FIRST_NAME VARCHAR(25),
@@ -31,6 +32,7 @@ CREATE TABLE Bonus (
 	WORKER_REF_ID INT, 
 	BONUS_AMOUNT INT(10),
     BONUS_DATE DATETIME,
+    #Yaha Constraint dala hai 
     FOREIGN KEY (WORKER_REF_ID)
 		REFERENCES Worker(WORKER_ID)
 		ON DELETE CASCADE
@@ -206,39 +208,75 @@ desc WORKER_CLONE;
 
 
 -- Q-29. Write an SQL query to fetch intersecting records of two tables.
-
+select worker.* from WORKER INNER JOIN WORKER_CLONE USING(WORKER_ID);
 
 -- Q-30. Write an SQL query to show records from one table that another table does not have.
 -- MINUS
+select worker.* from WORKER LEFT JOIN WORKER_CLONE USING(WORKER_ID) WHERE WORKER_CLONE.worker_id <> NULL;
 
 
 -- Q-31. Write an SQL query to show the current date and time.
 -- DUAL
+select curdate();
+select now();
 
 -- Q-32. Write an SQL query to show the top n (say 5) records of a table order by descending salary.
-
+select * from worker ORDER BY salary DESC limit 5;
 
 -- Q-33. Write an SQL query to determine the nth (say n=5) highest salary from a table.
-
+select * from worker ORDER BY salary DESC limit 4,1;
 
 -- Q-34. Write an SQL query to determine the 5th highest salary without using LIMIT keyword.
-
-
+select salary from worker w1 where 4 = (select count(distinct (w2.worker_id)) from worker as w2 where w1.salary < w2.salary);
  
 -- Q-35. Write an SQL query to fetch the list of employees with the same salary.
-
+select * from worker w1,worker w2 where w1.salary = w2.salary and w1.worker_id <> w2.worker_id;
 
 -- Q-36. Write an SQL query to show the second highest salary from a table using sub-query.
-
+select max(salary) from worker where salary not in (select max(salary) from worker);
 
 -- Q-37. Write an SQL query to show one row twice in results from a table.
-
+select * from worker
+UNION ALL
+select * from worker ORDER BY worker_id;
 
 -- Q-38. Write an SQL query to list worker_id who does not get bonus.
-
+select * from worker where worker_id not in (select worker_ref_id from bonus);
 
 -- Q-39. Write an SQL query to fetch the first 50% records from a table.
-
+select * from worker where worker_id <= (select count(worker_id)/2 from worker);
 
 -- Q-40. Write an SQL query to fetch the departments that have less than 4 people in it.
+select count(worker_id), department from worker group by department having count(worker_id) <= 4; 
+
+-- Q-41. Write an SQL query to show all departments along with the number of people in there.
+select count(worker_id) Folks, department from worker group by department; 
+
+-- Q-42. Write an SQL query to show the last record from a table.
+select * from worker where worker_id = (select count(*) from worker);
+
+-- Q-43. Write an SQL query to fetch the first row of a table.
+select * from worker where worker_id = 1;
+
+-- Q-44. Write an SQL query to fetch the last five records from a table.
+select * from worker order by worker_id desc limit 5;
+
+-- Q-45. Write an SQL query to print the name of employees having the highest salary in each department.
+select w.salary , w.first_name, w.department from  
+(select max(salary) as maxSal,department from worker group by department) as t
+inner join worker w on w.salary=t.maxSal and w.department = t.department;
+
+-- Q-46. Write an SQL query to fetch three max salaries from a table using co-related subquery
+
+-- DRY RUN AFTER REVISING THE CORELATED SUBQUERY CONCEPT FROM LEC-9.
+
+
+-- Q-47. Write an SQL query to fetch three min salaries from a table using co-related subquery
+
+-- Q-48. Write an SQL query to fetch nth max salaries from a table.
+
+-- Q-49. Write an SQL query to fetch departments along with the total salaries paid for each of them.
+
+
+-- Q-50. Write an SQL query to fetch the names of workers who earn the highest salary.
 
