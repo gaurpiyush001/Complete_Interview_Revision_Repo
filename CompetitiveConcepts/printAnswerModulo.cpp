@@ -12,7 +12,7 @@
 //Problem setter ko pta hai tum large number ki factorial value calculate toh krlogey but STORE NHI KRPAAOGEY, then problem setter gives a number to modulo and give answer corresponding to that modular operation.
 
 //why % 10^9+7??
-//1. Now we can store answer in int datatype as answer will not be beyond 10^7
+//1. Now we can store answer in int datatype as  answer will not be beyond 10^7
 //2. MMI -> Multiplicative Inverse -> 
 
 //In question where answer is too large, a line is given in question
