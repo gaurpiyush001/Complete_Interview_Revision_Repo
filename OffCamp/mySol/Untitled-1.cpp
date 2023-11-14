@@ -175,7 +175,7 @@ bool update(string name, int ID, unordered_map<string, Block *> &mp)
 
     lock(block->blockName, ID, mp);
 
-    return false;
+    return true;
 }
 
 int main()
