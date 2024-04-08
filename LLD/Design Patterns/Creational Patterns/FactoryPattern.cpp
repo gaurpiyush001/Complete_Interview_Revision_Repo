@@ -5,6 +5,7 @@ using namespace std;
 class Transportation
 {
 public:
+
     // pure virtual function
     virtual string doSomeThing() const = 0;
 

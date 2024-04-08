@@ -4,3 +4,11 @@
 	1.3 Liskov Substitution Principle -> https://blog.knoldus.com/what-is-liskov-substitution-principle-lsp-with-real-world-examples/#:~:text=Simply%20put%2C%20the%20Liskov%20Substitution,the%20objects%20of%20our%20superclass.
 	1.4 Interface Segregation Principle -> https://levelup.gitconnected.com/interface-segregation-principle-in-java-44f1c1a4eacd
 	1.5 Dependency Inversion Principle -> 
+
+O - Open/Closed Principle (OCP): This principle suggests that software entities (classes, modules, functions, etc.) should be open for extension but closed for modification. In other words, you should be able to extend the behavior of a class without modifying its source code
+
+L - Liskov Substitution Principle (LSP): This principle states that objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program. In simpler terms, derived classes should be substitutable for their base classes without changing the desired properties of the program.
+
+I - Interface Segregation Principle (ISP): This principle advises that clients should not be forced to depend on interfaces they don't use. It encourages the creation of smaller, specific interfaces rather than large, monolithic ones, thus preventing clients from being burdened with unnecessary methods or behaviors.
+
+D - Dependency Inversion Principle (DIP): This principle suggests that high-level modules should not depend on low-level modules, but rather both should depend on abstractions. Additionally, it promotes the idea that abstractions should not depend on details; instead, details should depend on abstractions. This helps in achieving decoupling and flexibility in the design.
