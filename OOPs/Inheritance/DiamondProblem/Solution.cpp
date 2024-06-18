@@ -2,7 +2,7 @@
 using namespace std;
 
 //What is a diamond problem in cpp?
-// In C++, virtual inheritance is a concept used to address the "diamond problem," which occurs when a class inherits from two classes that have a common base class. This situation can lead to ambiguity in the inheritance hierarchy. Virtual inheritance is a mechanism that helps prevent problems associated with this ambiguity.
+// In C++, virtual inheritance is a concept used to address the "diamond problem,"(This helps prevent the "diamond problem" where ambiguities arise due to multiple paths to a common base class.) which occurs when a class inherits from two classes that have a common base class. This situation can lead to ambiguity in the inheritance hierarchy. Virtual inheritance is a mechanism that helps prevent problems associated with this ambiguity.
 
 class A{ public: int _a; };
 
