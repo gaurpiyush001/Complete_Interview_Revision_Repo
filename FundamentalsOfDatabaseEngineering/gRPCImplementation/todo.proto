@@ -1,0 +1,27 @@
+syntax = "proto3" // defining protocol buffer version
+
+package todoPackage; // need to define our package which can contain multiple services
+
+
+// lets build our first service
+service Todo{
+
+    rpc createTodo( TodoItem ) returns ( TodoItem ) // takes some parameter and returns something 
+    rpc readTodos( void ) returns ( TodoItems )
+
+}
+
+// proto buff - we need to define a type even we are not passing any parameter to method, like void in C
+message void {}
+
+// defining retuern type of createTodo method
+message TodoItem {
+    int32 id = 1;
+    string text = 2;
+}
+
+message TodoItems {
+    repeated TodoItem items = 1; // this is an array so keyword repeated is used
+}
+
+// google uses come compilers to compile these proto buffs to your own language, same thing is done by gRPC
