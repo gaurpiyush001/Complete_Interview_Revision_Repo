@@ -1,0 +1,151 @@
+The following are the benefits of using Python language:
+
+Object-Oriented Language
+High-Level Language
+Dynamically Typed language
+Extensive support Libraries
+Presence of third-party modules
+Open source and community development
+Portable and Interactive
+Portable across Operating systems
+
+
+3. Is Python a compiled language or an interpreted language?
+Actually, Python is a partially compiled language and partially interpreted language. The compilation part is done first when we execute our code and this will generate byte code internally this byte code gets converted by the Python virtual machine(p.v.m) according to the underlying platform(machine+operating system).
+
+What is the difference between a Mutable datatype and an Immutable data type?
+Mutable data types can be edited i.e., they can change at runtime. Eg – List, Dictionary, etc.
+Immutable data types can not be edited i.e., they can not change at runtime. Eg – String, Tuple, etc.
+
+How are arguments passed by value or by reference in Python?
+Everything in Python is an object and all variables hold references to the objects. The reference values are according to the functions; as a result, you cannot change the value of the references. However, you can change the objects if it is mutable.
+
+In Python, variables can either hold immutable objects (like integers, floats, strings, tuples) or mutable objects (like lists, dictionaries, sets). When we talk about references in Python, we're referring to how variables are essentially pointers to objects in memory.
+
+x = 5   # x refers to the integer object 5
+x = 10  # Now x refers to a new integer object 10
+
+Mutable objects: For mutable objects (e.g., lists, dictionaries), you can change the object itself after it has been created. This means you can modify the object's state, add elements, remove elements, etc., without changing the reference to the object.
+
+7. What is the difference between a Set and Dictionary?
+The set is an unordered collection of data types that is iterable, mutable and has no duplicate elements.
+A dictionary in Python is an ordered collection of data values, used to store data values like a map.
+
+What is a lambda function?
+A lambda function is an anonymous function. This function can have any number of parameters but, can have just one statement.
+
+What is the difference between / and // in Python?
+/ represents precise division (result is a floating point number) whereas // represents floor division (result is an integer)
+
+
+ What are *args and *kwargs?
+To pass a variable number of arguments to a function in Python, use the special syntax *args and **kwargs in the function specification. It is used to pass a variable-length, keyword-free argument list. By using the *, the variable we associate with the * becomes iterable, allowing you to do operations on it such as iterating over it and using higher-order operations like map and filter.
+
+There are several sequence types in Python:
+Python String
+Python List
+Python Tuple
+Python range
+
+my_generator = (x for x in range(5))
+print(my_generator)  # Output: <generator object <genexpr> at 0x7fcaa83b4410>
+In contrast, (x for x in range(5)) is a generator expression. It doesn't produce a concrete list but rather a generator object that can lazily produce values when iterated over.
+
+Let’s analyze the differences between List and Tuple:
+
+List
+
+Lists are Mutable datatype.
+Lists consume more memory
+The list is better for performing operations, such as insertion and deletion.
+The implication of iterations is Time-consuming
+Tuple
+
+Tuples are Immutable datatype.
+Tuple consumes less memory as compared to the list
+A Tuple data type is appropriate for accessing the elements
+The implication of iterations is comparatively Faster
+
+Which sorting technique is used by sort() and sorted() functions of python?
+Python uses the Tim Sort algorithm for sorting. It’s a stable sorting whose worst case is O(N log N). It’s a hybrid sorting algorithm, derived from merge sort and insertion sort
+
+0. What are Decorators?
+Decorators are a very powerful and useful tool in Python as they are the specific change that we make in Python syntax to alter functions easily.
+
+python -m pdb python-script.py
+
+Does Python supports multiple Inheritance?
+Python does support multiple inheritances, unlike Java. Multiple inheritances mean that a class can be derived from more than one parent class.
+
+How is memory management done in Python?
+Python uses its private heap space to manage the memory. Basically, all the objects and data structures are stored in the private heap space. Even the programmer can not access this private space as the interpreter takes care of this space. Python also has an inbuilt garbage collector, which recycles all the unused memory and frees the memory and makes it available to the heap space.
+
+What is PIP?
+PIP is an acronym for Python Installer Package which provides a seamless interface to install various Python modules. 
+
+What is __init__() in Python?
+Equivalent to constructors in OOP terminology, __init__ is a reserved method in Python classes. The __init__ method is called automatically whenever a new object is initiated. This method allocates memory to the new object as soon as it is created. This method can also be used to initialize variables.
+
+What are Access Specifiers in Python?
+Python uses the ‘_’ symbol to determine the access control for a specific data member or a member function of a class. A Class in Python has three types of Python access modifiers:
+Public Access Modifier: 
+Protected Access Modifier: _
+Private Access Modifier: __
+
+ Python Global Interpreter Lock (GIL)?
+Python Global Interpreter Lock (GIL) is a type of process lock that is used by Python whenever it deals with processes. Generally, Python only uses only one thread to execute the set of written statements. The performance of the single-threaded process and the multi-threaded process will be the same in Python and this is because of GIL in Python. We can not achieve multithreading in Python because we have a global interpreter lock that restricts the threads and works as a single thread.
+
+
+The Global Interpreter Lock (GIL) in Python is a mutex (or a lock) that protects access to Python objects, preventing multiple native threads from executing Python bytecodes simultaneously
+
+While the GIL in Python restricts true multithreading for CPU-bound tasks, it does not prevent the use of asynchronous programming for I/O-bound operations or cooperative multitasking. Async operations in Python leverage event loops and coroutines to achieve non-blocking execution, making Python suitable for handling concurrent I/O operations efficiently.
+
+How Is Multithreading Achieved in Python?
+How Is Multithreading Achieved in Python?
+Multithreading usually implies that multiple threads are executed concurrently. The Python Global Interpreter Lock doesn't allow more than one thread to hold the Python interpreter at that particular point of time. So multithreading in python is achieved through context switching
+
+How is Memory managed in Python?
+Python has a private heap space that stores all the objects. The Python memory manager regulates various aspects of this heap, such as sharing, caching, segmentation, and allocation. The user has no control over the heap; only the Python interpreter has access.
+
+What Is the Difference Between Del and Remove() on Lists?
+del
+del removes all elements of a list within a given range 
+Syntax: del list[start:end]
+
+remove()
+remove() removes the first occurrence of a particular character 
+Syntax: list.remove(element)
+
+What is the order of class inheritance in Python?
+The order of class inheritance in Python follows the Method Resolution Order (MRO). MRO determines the order in which base classes are searched when executing a method. It is determined using the C3 linearization algorithm, also known as C3 superclass linearization. You can view the MRO of a class using the __mro__ attribute or the mro() method. 
+
+How in what order are methods resolved during multiple inheritance?
+In Python, methods are resolved using the MRO, which is determined by the C3 linearization algorithm. This algorithm ensures that a consistent order is maintained, prioritizing the leftmost base class first and then following the order of inheritance.
+
+How does Python resolve multiple inheritances?
+Python resolves multiple inheritances using the C3 linearization algorithm to determine the MRO. This algorithm ensures that the inheritance order is consistent and that each class appears before its parents.
+
+3. What GIL (global interpreter lock)? How does it allow multi-threading in python?
+
+Answer: GIL is a lock which makes sure python interpreter is held by only one thread at a time. That means only one thread can be in a execution status at any point of time. And this is why python is a single threaded programming language. This was introduced to solve the reference count problem which is used by python for garbage collection.
+
+Then how is multi-threading module working in python, you may ask!
+Well, this global interpreter lock applies only for CPU bound activities. So if there is any code which affects or uses CPU it automatically starts acting as a single threaded. But all the general programs can still work in a multi-threaded fashion.
+
+What is WSGI and UWSGI?
+
+Solution:
+Web server gateway interface, as the name suggests it is a interface between the application itself and web server.
+Django provides runserver for development server and for debugging, but for production we use WSGI in combination of any web servers like nginx, apache, or even uwsgi server.
+wsgi and uwsgi are both protocols, and these work with web servers to serve good performance application in production.
+
+So when client makes a request to django application, the request is read by nginx or any web server. Then nginx passes this request to the uwsgi service which intern passes it to concerned django app.
+
+
+Web Server (e.g., Nginx): Acts as a reverse proxy, handling incoming requests from clients and passing them to the application server (like uWSGI or a WSGI server).
+Application Server (e.g., uWSGI or Gunicorn): Runs the Python application, handling the execution of Python code and interfacing with the web server.
+
+Client ---> Web Server ---> Application Server ---> Backend Server (Database)
+   ^             |                   |                      |
+   |             |                   |                      |
+   +-------------+-------------------+----------------------+
