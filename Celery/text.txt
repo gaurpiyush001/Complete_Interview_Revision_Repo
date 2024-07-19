@@ -1,0 +1,17 @@
+https://medium.com/@runitranjankumar/celery-advanatges-and-questions-76c1a8455f8a
+
+What happens if a Celery task fails during execution?
+
+**Answer:** If a Celery task fails during execution (for example, due to an exception), Celery can be configured to perform the following actions:
+- Record the failure in the backend along with a detailed error message.
+- Optionally, retry the task a specified number of times with a delay between retries.
+- After the maximum number of retries is reached, the task is marked as "failed."
+
+Worker processes in the context of Celery and Django refer to separate processes that execute background tasks. These tasks are typically time-consuming or asynchronous, meaning they can be run independently of the main application flow. This allows the main web application to respond to user requests quickly without being blocked by long-running operations.
+
+Celery is an asynchronous task queue/job queue based on distributed message passing. It is focused on real-time operation but supports scheduling as well.
+
+When a task is called, instead of being executed immediately, it is sent to a message broker (like Redis or RabbitMQ) and queued.
+
+Celery worker processes listen to the message broker for new tasks. When a task is received, a worker process picks it up and executes it.
+Worker processes in Celery are dedicated processes that handle the execution of background tasks for a Django application
