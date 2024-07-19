@@ -1,0 +1,65 @@
+Explain Django Architecture?
+Django is a Python-based web framework which allows you to quickly create web application without all of the installation or dependency problems that you normally will find with other frameworks. Django is based on MVT (Model-View-Template) architecture. MVT is a software design pattern for developing a web application.
+
+
+Django lets us interact with its database models, i.e. add, delete, modify, and query objects, using a database-abstraction API called ORM(Object Relational Mapper).Django’s Object-Relational Mapping (ORM) system, a fundamental component that bridges the gap between the database and the application’s code.
+
+Use the Model’s Manager: Every Django model comes with a default manager called objects. You can use this manager to perform queries on the model.
+
+ Difference between select related and prefetch related?
+In Django, select_related and prefetch_related are designed to stop the deluge of database queries that are caused by accessing related objects.
+
+select_related() “follows” foreign-key relationships, selecting additional related-object data when it executes its query.
+prefetch_related() does a separate lookup for each relationship and does the “joining” in Python.
+
+select_related():
+Purpose: select_related() is used to retrieve related objects in a single query using SQL JOIN operations.
+
+How it Works:
+
+It works by creating a single SQL query that joins the related tables and retrieves the data in one go.
+This is beneficial when you need to access related objects that are linked via foreign keys.
+It reduces the number of database queries but increases the size of the result set due to joining related tables.
+
+
+prefetch_related():
+Purpose: prefetch_related() is used to retrieve related objects via separate database queries and then perform the joining in Python.
+
+How it Works:
+
+It executes multiple queries to fetch the related objects separately.
+Once retrieved, Django performs the joining in Python, organizing the data into a nested data structure.
+This approach is useful when dealing with many-to-many or reverse foreign key relationships, or when you need to optimize memory usage at the expense of additional queries.
+
+
+How can you combine multiple QuerySets in a View?
+A QuerySet is a collection of database queries to retrieve data from your database. It represents a set of records from a database table or a result of a database query. Query sets are lazy, meaning they are not evaluated until you explicitly request the data, which makes them highly efficient.
+
+
+What are Django URLs?
+In Django, views are Python functions which take a URL request as parameter and return an HTTP response or throw an exception like 404. Each view needs to be mapped to a corresponding URL pattern. This is done via a Python module called URLConf(URL configuration).
+
+
+ What are the views of Django?
+Django Views are one of the vital participants of MVT Structure of Django. As per Django Documentation, A view function is a Python function that takes a Web request and returns a Web response. This response can be the HTML contents of a Web page, or a redirect, or a 404 error
+
+"Django is a batteries-included web framework written in Python" means that Django comes with a comprehensive set of features and tools built-in, ready to use out of the box. This philosophy contrasts with more minimalist frameworks that require additional configuration or third-party libraries to achieve similar functionality
+
+Comprehensive Set of Features - 
+Admin Interface:
+Django provides an automatic, customizable admin interface for managing application data.
+
+Authentication:
+Built-in authentication system for handling user accounts, groups, permissions, and password management.
+
+ORM (Object-Relational Mapping):
+A powerful and flexible ORM that allows developers to interact with databases using Python classes and methods instead of writing raw SQL.
+
+URL Routing:
+A robust URL routing system that maps URLs to views using a clean and expressive syntax.
+
+What are middlewares in Django? How do you create custom middleware.
+
+Answer:
+Middleware is a low-level plugin that can be used to hook into Django’s request/response cycle. There are already middlewares available by default when a django project is created and it can found in settings.py.
+We can create a custom middleware and include it in the list of middleware with the existing ones.
