@@ -14,7 +14,7 @@ public:
 
     // Overloading less than operator
     bool operator<(const CustomObject& other) const {
-        return value < other.value; // Custom comparison logic
+        return this->value < other.value; // Custom comparison logic
     }
 };
 
