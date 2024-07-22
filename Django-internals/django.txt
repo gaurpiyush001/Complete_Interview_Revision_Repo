@@ -63,3 +63,77 @@ What are middlewares in Django? How do you create custom middleware.
 Answer:
 Middleware is a low-level plugin that can be used to hook into Django’s request/response cycle. There are already middlewares available by default when a django project is created and it can found in settings.py.
 We can create a custom middleware and include it in the list of middleware with the existing ones.
+
+
+Coalesce in Django
+Coalesce is a function used to handle NULL values. It returns the first non-null value from a list of arguments. This is beneficial when dealing with nullable fields to ensure that the aggregation or calculation does not result in a NULL.
+
+
+BOTH WILL WORK 
+orders = Order.objects.values('customer').annotate(total_amount=Sum('amount')) ----->VALID GROUP BY 
+orders = Order.objects.annotate(total_amount=Sum('amount')).values('customer') ------ For EACH RECORD NEW ATTRIBUTE WITH TOTAL_AMOUNT IS CALCULATED, AND VALUES GIVES THE KEY VALUE PAIR OF RESULT SET, SAME SPECIFIEED IN VALUES METHOD
+
+
+Django user model - CONTRIB.AUTH.MODELS
+Inheritance Hierarchy
+django.contrib.auth.models.User:
+Inherits from AbstractBaseUser and PermissionsMixin.
+Provides a complete implementation of a typical user model, including fields for username, password, email, first name, and last name.
+
+AbstractUser:
+Inherits from AbstractBaseUser and PermissionsMixin.
+Adds some additional fields and methods on top of AbstractBaseUser, providing a more complete user model but still intended to be extended for customization.
+
+AbstractBaseUser:
+Provides the core implementation of a user model, including fields for password and last login but does not include fields like username or email.
+Intended to be extended to create custom user models.
+
+PermissionsMixin:
+Provides methods and fields for handling user permissions.
+
+
+*******IMPORTANT********
+rest_framework.authentication.TokenAuthentication
+Overview:
+
+TokenAuthentication is a simpler, token-based authentication scheme that is included with DRF. It uses a single token (not JWT) that the client must send with each request.
+Key Features:
+
+Single Token: Each user is issued a single, static token which they include in the Authorization header of their requests.
+Database Storage: Tokens are stored in the database in the Token model provided by DRF.
+Stateful: Because tokens are stored in the database, this method is stateful. The server must check the token's validity against the database for each request.
+No Expiry/Refresh: Tokens do not expire by default, and there is no concept of refresh tokens. You would need to implement this functionality manually if needed.
+Simplicity: TokenAuthentication is simpler to set up and understand, making it suitable for smaller applications or those with less stringent security requirements.
+
+
+Summary
+djangorestframework-simplejwt
+Uses JWTs, which are self-contained, stateless, and can include custom claims.
+Supports token expiration and refresh tokens.
+More complex but suitable for scalable and secure applications.
+
+rest_framework.authentication.TokenAuthentication
+Uses simple tokens stored in the database.
+Statefull and does not include built-in support for token expiration or refresh.
+Easier to set up and manage, suitable for smaller or simpler applications.
+
+
+Django comes with a default user model (django.contrib.auth.models.User) that includes fields like username, email, password (hashed), and various methods for user management.
+Authentication is managed through authentication backends (AUTHENTICATION_BACKENDS setting), which determine where Django looks for user information and how it authenticates users. The default backend (ModelBackend) authenticates users against the database-backed user model.
+
+
+Default Backend: ModelBackend
+The ModelBackend is Django's default authentication backend.
+It authenticates users against the database-backed user model (django.contrib.auth.models.User).
+This backend is responsible for querying the database to find a user matching the provided credentials during the login process.
+It verifies passwords by checking against the hashed password stored in the database and ensures username or email uniqueness constraints.
+
+
+**************************************
+Django automatically stores passwords in a hashed and encrypted format using its built-in password hashing system
+SALTING
+Django adds a random salt to each password before hashing it. This ensures that even if two users have the same password, their hashed passwords will be different.
+When a password is set using set_password(internally uses make_password) method, Django automatically hashes the password and stores it in the password field of the user model.
+PASSWORD STORAGE FORMAT -
+<algorithm>$<iterations>$<salt>$<hash>
+
