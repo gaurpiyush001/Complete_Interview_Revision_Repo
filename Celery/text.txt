@@ -15,3 +15,11 @@ When a task is called, instead of being executed immediately, it is sent to a me
 
 Celery worker processes listen to the message broker for new tasks. When a task is received, a worker process picks it up and executes it.
 Worker processes in Celery are dedicated processes that handle the execution of background tasks for a Django application
+
+
+Can you explain the concept of asynchronous tasks and how Celery handles them?
+Asynchronous tasks allow your application to perform operations in the background without blocking the main execution flow. This is particularly useful for handling long-running or resource-intensive operations, such as sending emails, processing files, or making external API calls, while keeping the user experience responsive.
+
+Concept of Asynchronous Tasks
+Asynchronous tasks are tasks that are executed separately from the main program flow. Instead of waiting for a task to complete, your application can continue doing other work. This is achieved through a task queue and a worker process.
+
