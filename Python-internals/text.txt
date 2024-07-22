@@ -71,6 +71,78 @@ Python uses the Tim Sort algorithm for sorting. It’s a stable sorting whose wo
 
 0. What are Decorators?
 Decorators are a very powerful and useful tool in Python as they are the specific change that we make in Python syntax to alter functions easily.
+In Python, decorators are a way to modify or extend the behavior of functions or methods without changing their code. They are essentially functions that take another function as an argument and return a new function that enhances or alters the original function's behavior.
+
+def my_decorator(f):
+    def wrapper():
+        print("Before the function call")
+        f()
+        print("After the function call")
+    return wrapper
+
+@my_decorator
+def my_function():
+    print("Inside the function")
+
+my_function()
+
+how above will execute , how decorators actually accepts arguments, internally, and can we write more than one decorator over a function how will be the order of execution
+
+How the Decorator Executes
+SOLUTION - 
+
+@my_decorator
+def my_function():
+    print("Inside the function")
+
+Above code is equivalent to
+def my_function():
+    print("Inside the function")
+
+my_function = my_decorator(my_function)
+
+
+Internal Mechanism of Decorators - 
+Internally, a decorator works by wrapping the original function in another function (the wrapper), which can add functionality before and after the original function call.
+
+Multiple Decorators
+You can apply multiple decorators to a single function. The decorators are applied from the innermost (closest to the function) to the outermost.
+def decorator1(f):
+    def wrapper():
+        print("Decorator 1 Before")
+        f()
+        print("Decorator 1 After")
+    return wrapper
+
+def decorator2(f):
+    def wrapper():
+        print("Decorator 2 Before")
+        f()
+        print("Decorator 2 After")
+    return wrapper
+
+@decorator1
+@decorator2
+def my_function():
+    print("Inside the function")
+
+my_function()
+
+SOLUTION 
+Order of Execution
+The order of execution for the decorators applied is:
+
+decorator2 is applied to my_function first.
+decorator1 is then applied to the result of decorator2(my_function).
+So, the actual execution order is:
+Decorator 1 Before
+Decorator 2 Before
+Inside the function
+Decorator 2 After
+Decorator 1 After
+
+USES ============
+Decorators are commonly used for logging, access control, memoization, and other cross-cutting concerns.
 
 python -m pdb python-script.py
 
@@ -149,3 +221,90 @@ Client ---> Web Server ---> Application Server ---> Backend Server (Database)
    ^             |                   |                      |
    |             |                   |                      |
    +-------------+-------------------+----------------------+
+
+
+In object-oriented programming, specifically in languages like Python, the super() function is used to call methods and access attributes of a parent or superclass within a subclass.
+class Parent:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        print(f"Hello, {self.name}!")
+
+class Child(Parent):
+    def __init__(self, name, age):
+        super().__init__(name)  # Calling parent class constructor
+        self.age = age
+
+    def greet(self):
+        super().greet()  # Calling parent class method
+        print(f"You are {self.age} years old.")
+
+IMPORTANT -       
+super() accepts two optional arguments: the current class (type) and an object (obj).
+
+When to Call super(): 
+ calling super().__init__() ensures that the initialization logic of the parent class is executed before the subclass-specific initialization.
+ When overriding methods inherited from the parent class, calling super().method_name() allows extending or modifying the behavior of the parent class method.
+
+
+******NOTE*******
+When you define a subclass (Child) that inherits from Parent, Python does not require you to explicitly initialize parent class attributes before child class attributes.
+
+
+************************************
+In object-oriented programming, abstract classes and interfaces are two ways to achieve abstraction and define contracts for what a class can do. They are used to define methods that must be implemented by derived classes, but they serve slightly different purposes and have different features.
+
+why do we need to inherit ABC , what does it do internally ? withouf inherting ABC can we have @abstractmethod in class ?
+In Python, inheriting from ABC (Abstract Base Class) and using the @abstractmethod decorator serve specific purposes in defining abstract base classes and enforcing method implementations in subclasses.
+
+AbstractBaseClass
+Features:
+Can have both abstract and concrete methods.
+Can have member variables.
+Can provide default behavior.
+Can have constructors.
+Supports access modifiers (public, protected, private).
+
+Interface
+Features:
+Can only have method declarations (no implementation).
+Cannot have member variables (only constants, if any).
+Cannot provide any behavior (no concrete methods).
+Does not have constructors.
+All methods are implicitly abstract and public.
+
+
+When to Use Which?
+Use abstract classes when you have a clear class hierarchy and shared functionality.
+Use interfaces when you need to define a contract for capabilities that can be implemented by any class, irrespective of the inheritance tree.
+
+
+What Does ABC Do Internally?
+When a class inherits from ABC, it gains special behavior provided by the abc module:
+Metaclass Handling: The ABC class uses a metaclass called ABCMeta. This metaclass adds extra checks when a new class is created to ensure that any class with abstract methods cannot be instantiated until those methods are implemented.
+Abstract Method Registration: The ABCMeta metaclass keeps track of abstract methods using the @abstractmethod decorator. It prevents the instantiation of any class that still has abstract methods.
+
+
+Without Inheriting ABC ================================================
+Without inheriting from ABC, the @abstractmethod decorator will not function as intended. Here’s why:
+No Enforcement: The @abstractmethod decorator relies on the class being managed by ABCMeta, which is the metaclass of ABC. If a class does not inherit from ABC, the @abstractmethod decorator has no effect, and the class can be instantiated without implementing abstract methods.
+
+
+-=-====================================
+from abc import ABC, abstractmethod
+
+class MyAbstractClass(ABC):
+    @abstractmethod
+    def my_abstract_method(self):
+        pass
+
+    def some_common_method(self):
+        print("This method is shared among all subclasses")
+
+class MyClass(MyAbstractClass):
+    def my_abstract_method(self):
+        pass
+
+
+Is the above code is valid code, My class can ve instantiated  ? ------------------YES (pass can be treated as method implementation definintion)
