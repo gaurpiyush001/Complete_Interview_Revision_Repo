@@ -21,6 +21,16 @@ using namespace std;
 //3. Initializing without default constructor from another class
 //4. You want to intialize your base class data member from child class
 
+
+// What happens if you don't call the base class constructor?
+// If you don't explicitly call the base class constructor in the initializer list, the compiler will automatically call the default constructor of the base class (if it exists). However, if the base class doesn't have a default constructor or you need to pass specific arguments to the base class constructor, you'll get a compilation error.
+
+// Key Points:
+// The base class constructor is called before the derived class's member variables are initialized.
+// You must use the initializer list to call a base class constructor if it requires arguments.
+// The order of construction is base class first, then derived class.
+
+
 class Base{
     char x;
 public:
