@@ -1,0 +1,12 @@
+arr[i]
+compiler interprets the above line as -:
+
+*(base_address(name_of_array) + index)
+
+##NOTE##
+When a pointer is incremented, it actually increments by the number equal to the size of the data type for which it is a pointer.
+
+--------------------------------------------------------
+
+why array index start from zero????
+In array, the index tells the distance from the starting element. So, the first element is at 0 distance from the starting element. So, that's why array start from 0.

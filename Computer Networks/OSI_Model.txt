@@ -1,0 +1,39 @@
+What Is the OSI Model
+The Open Systems Interconnection (OSI) model describes seven layers that computer systems use to communicate over a network. It was the first standard model for network communications, adopted by all major computer and telecommunication companies in the early 1980s
+
+The modern Internet is not based on OSI, but on the simpler TCP/IP model. However, the OSI 7-layer model is still widely used, as it helps visualize and communicate how networks operate, and helps isolate and troubleshoot networking problems.
+
+OSI Model Layer -:
+
+7. Application Layer
+It provides protocols that allow software to send and receive information and present meaningful data to users. A few examples of application layer protocols are the Hypertext Transfer Protocol (HTTP), File Transfer Protocol (FTP), Post Office Protocol (POP), Simple Mail Transfer Protocol (SMTP), and Domain Name System (DNS).
+
+6. Presentation Layer
+The presentation layer prepares data for the application layer. It defines how two devices should encode, encrypt, and compress data so it is received correctly on the other end.
+
+5. Session Layer
+The session layer creates communication channels, called sessions, between devices. It is responsible for opening sessions, ensuring they remain open and functional while data is being transferred, and closing them when communication ends. 
+
+4. Transport Layer
+The transport layer takes data transferred in the session layer and breaks it into “segments” on the transmitting end. It is responsible for reassembling the segments on the receiving end, turning it back into data that can be used by the session layer.
+
+3. Network Layer
+The network layer has two main functions. One is breaking up segments into network packets, and reassembling the packets on the receiving end. The other is routing packets by discovering the best path across a physical network.
+
+2. Data Link Layer
+The data link layer establishes and terminates a connection between two physically-connected nodes on a network. It breaks up packets into frames and sends them from source to destination. This layer is composed of two parts—Logical Link Control (LLC), which identifies network protocols, performs error checking and synchronizes frames, and Media Access Control (MAC) which uses MAC addresses to connect devices and define permissions to transmit and receive data.
+
+1. Physical Layer
+The physical layer is responsible for the physical cable or wireless connection between network nodes.
+
+
+Advantage of OSI Model
+#OSI is a generic, protocol-independent model intended to describe all forms of network communication.
+#Determine the required hardware and software to build their network.
+#Understand and communicate the process followed by components communicating across a network. 
+#Perform troubleshooting, by identifying which network layer is causing an issue and focusing efforts on that layer.
+
+
+Difference between TCP/IP Model and OSI Model-:
+#OSI layers 5, 6, 7 are combined into one Application Layer in TCP/IP
+#OSI layers 1, 2 are combined into one Network Access Layer in TCP/IP – however TCP/IP does not take responsibility for sequencing and acknowledgement functions, leaving these to the underlying transport layer.

@@ -1,0 +1,17 @@
+https://www.techtarget.com/searchnetworking/answer/What-is-the-difference-between-an-IP-address-and-a-physical-address#:~:text=A%20MAC%20address%20is%20responsible,bits%2C%20address%20assignment%20and%20interactions.
+
+Every computer or device on the internet has two types of addresses: its physical address and its internet address. The physical address -- which is also called a media access control, or MAC, address -- identifies a device to other devices on the same local network. The internet address -- or IP address -- identifies the device globally. A network packet needs both addresses to get to its destination.
+
+What is a MAC address?
+Media access control refers to the piece of hardware that controls how data is pushed out onto a network.
+A MAC address is responsible for local identification and an IP address for global identification. This is the primary difference between a MAC address and IP address, and it affects how they differ in their number of bits, address assignment and interactions. 
+
+MAC address vs. IP address: What's the difference?
+Both MAC addresses and IP addresses are meant to identify a network device, but in different ways. Some of the main differences between a MAC address and an IP address include the following:
+
+#local identification vs. global identification;
+#Layer 2 vs. Layer 3 operation;
+#physical address vs. logical address;
+#number of bits;
+#address assignment and permanence; and
+#address formatting.

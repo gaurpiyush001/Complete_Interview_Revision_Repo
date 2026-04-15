@@ -1,0 +1,118 @@
+Node* mappingObjective(Node* root, int target, unordered_map<Node*,Node*>& mp){
+
+    if(root==NULL)
+    return NULL;
+
+    //level order krna hai toh Queu use krlete hai
+    queue<Node*> q;
+    q.push(root);
+    mp[root] = NULL;
+    Node* temp = NULL;
+
+    while(!q.empty()){
+        
+        Node* topNode = q.front();
+        if(topNode->data == target && temp==NULL){
+            temp = topNode;
+        }
+        q.pop();
+
+        if(topNode->left != NULL){
+            mp[topNode->left] = topNode;
+            q.push(topNode->left);
+        }
+        if(topNode->right != NULL){
+            mp[topNode->right] = topNode;
+            q.push(topNode->right);
+        }
+
+    }
+
+    return temp;
+
+}
+
+int burnTime(Node* target, unordered_map<Node*,bool>& visited, unordered_map<Node*,Node*>& nodeToParent, queue<Node*>& q){
+
+    // if(target==NULL)
+    // return 0;
+    int time = 0;
+
+    q.push(target);//ek target node se mein left child, right child aur parent pe jaa skta hun toh vo sb individually push krney hai queu mein, But yaad rhey inko burn krney ka time 1sec hoga , time bs ek baar increment hoga
+    visited[target] = true;
+
+    while(!q.empty()){
+        
+        bool flag = 0;
+        int size = q.size();
+        
+        for(int i =0;i<size;i++){// ye loop nhi lgega toh fault increment hojayega Time mein, kyunki hume bs neighbours ko process krke check krna hai, koi addition huya hai ki nhi Queue mein
+        Node* topNode = q.front();
+        q.pop();
+
+        // int prevSize = q.size();
+
+        if(topNode->left != NULL){
+            if(!visited[topNode->left]){
+                flag = 1;
+            q.push(topNode->left);
+            visited[topNode->left] = true;
+            }
+        }
+        if(topNode->right != NULL){
+            if(!visited[topNode->right]){
+                flag = 1;
+            q.push(topNode->right);
+            visited[topNode->right] = true;
+            }
+        }
+        if(nodeToParent[topNode] != NULL){
+            if(!visited[nodeToParent[topNode]]){
+                flag = 1;
+            q.push(nodeToParent[topNode]);
+            visited[nodeToParent[topNode]] = true;
+            }
+        }
+        }
+        if(flag){
+            time++;
+        }
+
+    }
+
+    return time;
+}
+
+
+//main called function
+int minTime(Node *root, int target)
+{
+    // Your code goes here
+
+    //challenges kya ayengey mein node se children pe toh chlla jaumga But node se Parent ka toh koi pointer nhi hota...So that I have to tackle
+
+    //We can use unordered_map for having node to parent mapping
+    unordered_map<Node*, Node*> nodeToParent;
+
+    //Pointer to Target
+    Node* temp;
+
+    //LevelOrderTraversal krke pehle mapping kr lete hai
+    //By below function we got the mapping and target pointer as well
+    temp = mappingObjective(root, target, nodeToParent); 
+    // cout<<temp->data<<endl;
+    // cout<<nodeToParent.size()<<endl;
+
+    //Start Burning tree from target Node
+
+    //Ab jiss fashion mein BURN ho raha hai tree that is BFS Fashion so we can use queue
+
+    //Burn krney ke liye kuch data structure ki need hogi hume
+    //1.) For keep track of nodes visited and 
+    unordered_map<Node*,bool> visited;
+    //2.) Queue for burning tree with BFS Fashion
+    queue<Node*> q;
+    int time = burnTime(temp, visited, nodeToParent,  q);
+
+    return time;
+}
